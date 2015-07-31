@@ -749,7 +749,7 @@ function INSTALL_RTORRENT {
 	wget https://raw.githubusercontent.com/JohnFlowerful/rtorrent-ipv6-patches/master/rtorrent-0.9.4-tar.patch
 	./autogen.sh
 	patch -p1 < rtorrent-0.9.4-tar.patch
-	./configure --with-xmlrpc-c --enable-ipv6
+	./configure --enable-ipv6 --with-xmlrpc-c 
 	make
 	make install
 
