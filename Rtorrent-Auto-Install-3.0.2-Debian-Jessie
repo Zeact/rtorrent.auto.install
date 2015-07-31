@@ -733,8 +733,10 @@ function INSTALL_RTORRENT {
 	curl -L https://github.com/rakshasa/libtorrent/archive/0.13.4.tar.gz -o libtorrent-0.13.4.tar.gz
 	tar -zxvf libtorrent-0.13.4.tar.gz
 	cd libtorrent-0.13.4
+	wget https://raw.githubusercontent.com/JohnFlowerful/libtorrent-ipv6-patches/master/libtorrent-0.13.4-tar.patch
 	./autogen.sh
-	./configure
+	patch -p1 < libtorrent-0.13.4-tar.patch
+	./configure --enable-ipv6
 	make
 	make install
 
@@ -744,8 +746,10 @@ function INSTALL_RTORRENT {
 	curl -L https://github.com/rakshasa/rtorrent/archive/0.9.4.tar.gz -o rtorrent-0.9.4.tar.gz
 	tar -zxvf rtorrent-0.9.4.tar.gz
 	cd rtorrent-0.9.4
+	wget https://raw.githubusercontent.com/JohnFlowerful/rtorrent-ipv6-patches/master/rtorrent-0.9.4-tar.patch
 	./autogen.sh
-	./configure --with-xmlrpc-c
+	patch -p1 < rtorrent-0.9.4-tar.patch
+	./configure --with-xmlrpc-c --enable-ipv6
 	make
 	make install
 
